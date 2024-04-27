@@ -1,13 +1,23 @@
 <script lang="ts">
-  export let fontSize: string = 'inherit'
-  export let textAlign: 'left' | 'center' | 'right' = 'left'
+  import type {Snippet} from 'svelte'
+
+  let {
+    children,
+    fontSize = 'inherit',
+    textAlign = 'left',
+    ...props
+  }: {
+    children: Snippet,
+    fontSize: string,
+    textAlign: 'left' | 'center' | 'right',
+  } = $props()
 </script>
 
 <footer
   style:--font-size={fontSize}
   style:--text-align={textAlign}
-  {...$$props}
-><slot /></footer>
+  {...props}
+>{#if children}{@render children()}{/if}</footer>
 
 <style>
   footer {

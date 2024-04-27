@@ -1,8 +1,9 @@
 <script lang="ts">
+  let {children, ...props} = $props()
 </script>
 
-<article {...$$props}>
-    <slot/>
+<article {...props}>
+  {#if children}{@render children()}{/if}
 </article>
 
 <style>

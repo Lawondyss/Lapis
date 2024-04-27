@@ -1,6 +1,7 @@
 <script lang="ts">
+  let {children, ...props} = $props()
 </script>
 
-<main {...$$props}>
-  <slot />
+<main {...props}>
+  {#if children}{@render children()}{/if}
 </main>

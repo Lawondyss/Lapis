@@ -3,6 +3,8 @@
   import '$core/css/layout-container.css'
   import {user} from '$core/libs/user.svelte'
 
+  let {children} = $props()
+
   const year = new Date().getFullYear()
 </script>
 
@@ -21,9 +23,13 @@
         {#if user.isLoggedIn()}
           <a href="/sign-out">Odhlásit</a>
           <div class="user-identity">
-            <img src={`https://i.pravatar.cc/35?img=${user.identity.id}`} alt={user.identity.name} class="avatar" />
+            <img src={`https://i.pravatar.cc/35?img=${user.identity.id}`} alt={user.identity.name} class="avatar"/>
             <span>{user.identity.name}</span>
-            {#if user.hasRole('admin')}⚜️️️{/if}
+            {#if user.hasRole('admin')}
+              <span>⚜️</span>
+            {:else}
+              <span>⛱️</span>
+            {/if}
           </div>
         {:else}
           <a href="/sign-in">Přihlášení</a>
@@ -33,7 +39,7 @@
   </header>
 
   <main>
-    <slot></slot>
+    {#if children}{@render children()}{/if}
   </main>
 
   <footer>

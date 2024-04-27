@@ -3,6 +3,8 @@
   import {user} from '$core/libs/user.svelte'
 
   if (!user.isLoggedIn()) goto('/sign-in')
+
+  let {children} = $props()
 </script>
 
-<slot/>
+{#if children}{@render children()}{/if}

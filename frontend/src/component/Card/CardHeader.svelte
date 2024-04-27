@@ -1,13 +1,23 @@
 <script lang="ts">
-  export let fontSize: string = 'inherit'
-  export let textAlign: 'left' | 'center' | 'right' = 'center'
+  import type {Snippet} from 'svelte'
+
+  let {
+    children,
+    fontSize = 'inherit',
+    textAlign = 'center',
+    ...props
+  }: {
+    children: Snippet,
+    fontSize: string,
+    textAlign: 'left' | 'center' | 'right',
+  } = $props()
 </script>
 
 <header
   style:--font-size={fontSize}
   style:--text-align={textAlign}
-  {...$$props}
-><slot/></header>
+  {...props}
+>{#if children}{@render children()}{/if}</header>
 
 <style>
   header {
