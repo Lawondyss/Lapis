@@ -1,0 +1,2 @@
+services:
+  - App\Endpoint\Cdn\CdnStore

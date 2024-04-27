@@ -1,0 +1,46 @@
+version: '3'
+
+services:
+  nginx:
+    container_name: ${PROJECT_PREFIX}_nginx
+    build:
+      context: .
+      dockerfile: ./docker/nginx/Dockerfile
+    environment:
+      PROJECT_PREFIX: ${PROJECT_PREFIX}
+    ports:
+      - "${PROJECT_ADDR}:80:80"
+    volumes:
+      - ./static:/srv/www/static
+    depends_on:
+      - php
+      - nodejs
+
+  nodejs:
+    container_name: ${PROJECT_PREFIX}_nodejs
+    build:
+      context: .
+      dockerfile: ./docker/nodejs/Dockerfile
+    ports:
+      - "${PROJECT_ADDR}:3000:3000"
+      - "${PROJECT_ADDR}:4173:4173"
+    volumes:
+      - ./frontend:/srv/frontend
+      - ./.svelte-kit:/srv/.svelte-kit
+      - ./www:/srv/www
+    depends_on:
+      - php
+
+  php:
+    container_name: ${PROJECT_PREFIX}_php
+    build:
+      context: .
+      dockerfile: ./docker/php/Dockerfile
+    ports:
+      - "${PROJECT_ADDR}:9000:9000"
+    volumes:
+      - ./backend:/srv/backend
+      - ./logs:/srv/logs
+      - ./temp:/srv/temp
+      - ./vendor:/srv/vendor
+      - ./www/api:/srv/www/api

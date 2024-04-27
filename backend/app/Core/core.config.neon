@@ -1,0 +1,9 @@
+services:
+  app.router: App\Core\RouterFactory::create
+
+  # security
+  - Lapis\Security\Authorizator\OnlyAdminAuthorizator
+  - Lapis\Security\Authenticator\UserPassAuthenticator
+  - App\Core\Security\KeyProvider
+  - App\Core\Security\TokenManager
+  - App\Core\Model\EntityFactory

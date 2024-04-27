@@ -1,0 +1,95 @@
+@import "open-props/normalize.min.css";
+
+@import "open-props/animations.min.css";
+@import "open-props/aspects.min.css";
+@import "open-props/borders.min.css";
+@import "open-props/colors.min.css";
+@import "open-props/easings.min.css";
+@import "open-props/fonts.min.css";
+@import "open-props/shadows.min.css";
+@import "open-props/sizes.min.css";
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+    & > header {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        h1 {
+            padding-block: var(--size-4);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            overflow: hidden;
+            width: 100%;
+            background-color: var(--blue-12);
+            box-shadow: var(--shadow-2);
+
+            a {
+                display: inline-block;
+                padding: var(--size-3) var(--size-6);
+                color: var(--text-1);
+                transition: background-color 0.2s;
+
+                &:hover {
+                    background-color: #03050755;
+                }
+            }
+        }
+    }
+
+    & > main {
+        flex-grow: 1;
+        padding: var(--size-3);
+        box-shadow: var(--shadow-1);
+    }
+
+    & > footer {
+        padding: var(--size-3);
+        text-align: center;
+    }
+
+}
+
+a {
+    color: var(--blue-4);
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+.button, button, input[type="button"] {
+    display: inline-flex;
+    white-space: nowrap;
+
+    padding-inline: var(--size-3);
+    padding-block: var(--size-1);
+
+    color: var(--gray-1);
+    border: var(--border-size-1) solid var(--surface-1);
+    background-color: var(--blue-9);
+    border-radius: var(--radius-2);
+
+    &:is(:hover, :focus) {
+        cursor: pointer;
+        background-color: var(--blue-8);
+    }
+
+    &:active:not(:focus-visible) {
+        position: relative;
+    }
+}
+
+input, select, textarea {
+    border: var(--border-size-1) solid var(--surface-1);
+    background-color: var(--surface-3);
+}

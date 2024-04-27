@@ -1,0 +1,2 @@
+services:
+  - App\Endpoint\Admin\Recipe\Model\RecipeRepository

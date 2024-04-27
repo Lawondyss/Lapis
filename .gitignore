@@ -1,0 +1,13 @@
+.DS_Store
+/vendor
+/logs/*
+!/logs/.gitpush
+/temp/*
+!/temp/.gitpush
+/node_modules
+/build
+/.svelte-kit
+/package
+.env
+!.env.dist
+vite.config.js.timestamp-*
