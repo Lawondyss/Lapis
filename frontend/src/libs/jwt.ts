@@ -1,4 +1,4 @@
-import type {UserIdentity} from '$core/libs/user'
+import type {UserIdentity} from '$core/libs/user.svelte'
 
 export type Payload = {
   exp: number,

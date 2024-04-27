@@ -1,6 +1,6 @@
 import {PUBLIC_API_BASE_URL} from '$env/static/public'
 import {tokenStore} from '$core/libs/stores'
-import {user, type UserIdentity} from '$core/libs/user'
+import {user, type UserIdentity} from '$core/libs/user.svelte'
 import * as jwt from '$core/libs/jwt'
 
 class Authentication {
