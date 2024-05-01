@@ -28,6 +28,8 @@ services:
       - ./frontend:/srv/frontend
       - ./.svelte-kit:/srv/.svelte-kit
       - ./www:/srv/www
+      - ./package.json:/srv/package.json
+      - ./yarn.lock:/srv/yarn.lock
     depends_on:
       - php
 

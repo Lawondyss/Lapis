@@ -10,6 +10,7 @@
     children: Snippet,
     fontSize: string,
     textAlign: 'left' | 'center' | 'right',
+    [attr: string]: any,
   } = $props()
 </script>
 

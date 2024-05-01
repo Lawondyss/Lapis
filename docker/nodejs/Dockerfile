@@ -5,6 +5,7 @@ WORKDIR /srv
 # configs
 COPY .env ./
 COPY svelte.config.js ./
+COPY kitbook.config.ts ./
 COPY tsconfig.json ./
 COPY vite.config.ts ./
 
@@ -17,7 +18,8 @@ RUN yarn --dev --frozen-lockfile && yarn cache clean
 COPY ./frontend ./frontend
 
 # generate svelte-kit files
-RUN yarn check-kit
+# doesn't support Svelte 5 yet
+# RUN yarn check-kit
 
 # expose port for Vite
 EXPOSE 3000

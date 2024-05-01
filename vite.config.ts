@@ -1,11 +1,16 @@
 import fs from 'fs'
 import fg from 'fast-glob'
-import { resolve, dirname } from 'path'
+import {dirname, resolve} from 'path'
 import {sveltekit} from '@sveltejs/kit/vite'
+import {kitbook} from 'kitbook/plugins/vite'
+import kitbookConfig from './kitbook.config'
 import {defineConfig, normalizePath, type PluginOption, type ResolvedConfig} from 'vite'
 
 export default defineConfig({
-  plugins: [sveltekit()],
+  plugins: [
+    /* kitbook(kitbookConfig), doesn't support Svelte 5 yet */
+    sveltekit(),
+  ],
   server: {
     port: 3000,
     fs: {
@@ -41,12 +46,12 @@ function copyBackend(entryDir: string = 'backend', outDir: string = 'buildBE'): 
     },
 
     generateBundle: (): void => {
-      console.log({ root, sourceDir, buildDir })
+      console.log({root, sourceDir, buildDir})
 
       fg.sync(`${sourceDir}/**/*`).forEach((file: string) => {
         const target = file.replace(sourceDir, buildDir)
         const dir = dirname(target)
-        fs.mkdirSync(dir, { recursive: true })
+        fs.mkdirSync(dir, {recursive: true})
         const stat = fs.statfsSync(file)
         console.log({file, stat})
         //fs.copyFileSync(file, target)
