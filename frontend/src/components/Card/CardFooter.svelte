@@ -4,7 +4,8 @@
   let {
     children,
     fontSize = 'inherit',
-    textAlign = 'center',
+    textAlign = 'left',
+    style = null,
     ...props
   }: {
     children: Snippet,
@@ -14,17 +15,16 @@
   } = $props()
 </script>
 
-<header
+<footer
+  {style}
   style:--font-size={fontSize}
   style:--text-align={textAlign}
   {...props}
->{#if children}{@render children()}{/if}</header>
+>{#if children}{@render children()}{/if}</footer>
 
 <style>
-  header {
+  footer {
     font-size: var(--font-size);
     text-align: var(--text-align);
-    padding-bottom: var(--size-2);
-    box-shadow: var(--shadow-1);
   }
 </style>

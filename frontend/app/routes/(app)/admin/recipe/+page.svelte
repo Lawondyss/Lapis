@@ -1,6 +1,6 @@
 <script lang="ts">
   import {fetchRecipes} from './api'
-  import Card from '$core/component/Card/Card.svelte'
+  import Card from '$core/components/Card/Card.svelte'
 
   const difficultyEmoji = {
     Easy: '😁',
@@ -14,7 +14,7 @@
 {:then recipes}
   <div class="recipes-list">
     {#each recipes as recipe}
-      <Card>
+      <Card noPadding>
         <div class="display">
           <a href={`/admin/recipe/${recipe.id}`}>
             <img src={recipe.image} alt={recipe.name}/>

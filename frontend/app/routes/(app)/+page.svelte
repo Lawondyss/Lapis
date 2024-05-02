@@ -1,7 +1,7 @@
 <script lang="ts">
-  import {fetchInfo, fetchNewRecipes,} from './api'
-  import Card from '$core/component/Card/Card.svelte'
-  import CardHeader from '$core/component/Card/CardHeader.svelte'
+  import {fetchInfo, fetchNewRecipes} from './api'
+  import Card from '$core/components/Card/Card.svelte'
+  import CardHeader from '$core/components/Card/CardHeader.svelte'
 </script>
 
 <div class="info">
