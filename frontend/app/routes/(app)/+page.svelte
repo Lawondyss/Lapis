@@ -2,7 +2,39 @@
   import {fetchInfo, fetchNewRecipes} from './api'
   import Card from '$core/components/Card/Card.svelte'
   import CardHeader from '$core/components/Card/CardHeader.svelte'
+
+  import Alert from '$core/components/Alert/Alert.svelte'
+  import Modal from '$core/components/Modal/Modal.svelte'
+
+  let openAlert = $state(false)
+  let titleAlert = $state('lorem ipsum')
+  let openModal = $state(false)
+
+  $effect(() => {
+    document.addEventListener('keydown', (evt: KeyboardEvent) => {
+      if (evt.metaKey && evt.code === 'KeyK') {
+        openAlert = true
+        titleAlert = titleAlert.split('').reverse().join('')
+      }
+      if (evt.metaKey && evt.code === 'KeyM') {
+        openModal = true
+      }
+    })
+  })
 </script>
+<Modal bind:openModal>
+  <h1>Lipsum</h1>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pellentesque nibh a dolor gravida viverra.
+    Curabitur rhoncus, felis id rhoncus condimentum, libero arcu venenatis est, at rutrum erat lacus et tellus. Maecenas
+    tristique purus et mauris laoreet cursus. Donec elementum ullamcorper consequat.</p>
+  <p>Vestibulum faucibus nisi in gravida ultricies. Suspendisse feugiat vitae est et vehicula. Aenean vel eleifend
+    ipsum, iaculis elementum dui. Etiam elementum, mauris sit amet tempus euismod, massa turpis venenatis enim, accumsan
+    iaculis orci mauris id elit. Curabitur tempus ullamcorper elit.</p>
+</Modal>
+<Alert bind:openAlert
+       title="Lipsum"
+       message="Curabitur rhoncus, felis id rhoncus condimentum, libero arcu venenatis est, at rutrum erat lacus et tellus."
+       danger />
 
 <div class="info">
   {#await fetchInfo()}
