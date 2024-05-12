@@ -9,6 +9,12 @@
 @import "open-props/shadows.min.css";
 @import "open-props/sizes.min.css";
 
+& {
+    --size-content-1: calc(var(--size-content-1) * 2);
+    --size-content-2: calc(var(--size-content-2) * 2);
+    --size-content-3: calc(var(--size-content-3) * 2);
+}
+
 .wrapper {
     display: flex;
     flex-direction: column;
